@@ -10,6 +10,9 @@ var nutChartEl = document.getElementById('myNutChart');
 var barChartEl = document.getElementById('myBarChart');
 var lineChartEl = document.getElementById('myLineChart');
 
+var marketInfoEl = document.getElementById('market-info');
+var educationInfoEl = document.getElementById('education-info');
+
 
 
 
@@ -32,6 +35,13 @@ searchMainBtnEl.addEventListener('click', function() {
 });
 searchMainBtnEl.addEventListener('click', function() {
     lineChartEl.classList.remove('d-none');
+});   
+
+searchMainBtnEl.addEventListener('click', function() {
+    marketInfoEl.classList.remove('d-none');
+});
+searchMainBtnEl.addEventListener('click', function() {
+    educationInfoEl.classList.remove('d-none');
 });
 
 

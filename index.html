@@ -27,10 +27,9 @@
   </head>
   <body>
     <header><h1>Search a place to find information!</h1></header>
-    <p></p>
 
     <div class="container">
-      <div class="input-group">
+      <div class="input-group p-3 m-3">
         <input
           id="search-main"
           type="search"
@@ -49,19 +48,45 @@
       </div>
     </div>
 
-    <div id="map" class="d-none"></div>
+    <section class="container">
+      <div class="row justify-content-between">
+        <div id="map" class="d-none col-3"></div>
 
-    <div>
-      <canvas class="d-none" id="myNutChart"></canvas>
-    </div>
+        <div id="market-info" class="d-none col-3">
+          <h3>Market Rent Information</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
+            facere. Incidunt totam eum, id culpa odio blanditiis illo, ducimus
+            obcaecati illum doloribus dolor quaerat libero?
+          </p>
+        </div>
+        <div id="education-info" class="d-none col-3">
+          <h3>High Education Level Achieved</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus
+            quod consequuntur perferendis animi beatae rerum officiis? Aut
+            quisquam, blanditiis non, minus eaque nihil magni dolore vel ut,
+            mollitia veritatis corporis.
+          </p>
+        </div>
 
-    <div>
-      <canvas class="d-none" id="myBarChart"></canvas>
-    </div>
+        <div class="container">
+          <div class="row justify-content-between">
+            <div style="top: 60px; left: 10px; width: 30%; height: 500px">
+              <canvas class="d-none col-3" id="myNutChart"></canvas>
+            </div>
 
-    <div>
-      <canvas class="d-none" id="myLineChart"></canvas>
-    </div>
+            <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <canvas class="d-none col-3" id="myBarChart"></canvas>
+            </div>
+
+            <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <canvas class="d-none col-3" id="myLineChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
