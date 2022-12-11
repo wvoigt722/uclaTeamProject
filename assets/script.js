@@ -172,10 +172,10 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon
 new Chart(nutChartEl, {
   type: 'doughnut',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Rented', 'Owned', 'Vacant'],
     datasets: [{
       label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [12, 19, 3],
       borderWidth: 1
     }]
   },
@@ -195,9 +195,9 @@ new Chart(nutChartEl, {
 new Chart(barChartEl, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['1-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '41-45', '46-50', '51-55', '56-60', '61-65', '66-70', '71-75', '76-80', '81-85', '86-90', '90+'],
     datasets: [{
-      label: '# of Votes',
+      label: 'Population',
       data: [12, 19, 3, 5, 2, 3],
       borderWidth: 1
     }]
@@ -213,14 +213,15 @@ new Chart(barChartEl, {
 
 
 
+
 // Line Chart
 
 new Chart(lineChartEl, {
   type: 'line',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['<10k', '10-20k', '20-30k', '40-50k', '60-70k', '70-80k', '80-90k', '90-100k', '100k+'],
     datasets: [{
-      label: '# of Votes',
+      label: '# of Households',
       data: [12, 19, 3, 5, 2, 3],
       borderWidth: 1
     }]
