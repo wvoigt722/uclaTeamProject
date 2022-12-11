@@ -4,7 +4,7 @@ var searchMainEl = document.querySelector('#search-main');
 var searchMainBtnEl = document.querySelector('#search-main-btn');
 var mapEl = document.querySelector('#map');
 
-
+var weatherInfoEl = document.getElementById('weatherInfo');
 
 var nutChartEl = document.getElementById('myNutChart');
 var barChartEl = document.getElementById('myBarChart');
@@ -42,14 +42,17 @@ searchMainBtnEl.addEventListener('click', function() {
 searchMainBtnEl.addEventListener('click', function() {
     educationInfoEl.classList.remove('d-none');
 });
+searchMainBtnEl.addEventListener('click', function() {
+    weatherInfoEl.classList.remove('d-none');
+});
 
 
 
 // Google Maps API
 
 let map;
-var longitude = -74.00;
-var latitude = 40.71;
+var latitude = 35.363602;
+var longitude = 138.726379;
 
 
 function initMap() {
@@ -67,18 +70,64 @@ window.initMap = initMap;
 
 
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=' + weatherApiKey , {
+fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&appid=' + weatherApiKey + '&units=imperial' , {
     method: 'GET',
 })
 
     .then((res) => res.json())
     .then((data) => {
         console.log('Successful POST request:', data);
+
+        console.log(data);
+
+      // Name of City
+  
+      var cityName = data.city.name;
+      var cityNameEl = document.createElement('p');
+      cityNameEl.innerHTML = '<strong>City:</strong> ' + cityName;
+      weatherInfoEl.append(cityNameEl);
+      console.log(cityName);
+
+      // Temp of City
+      
+      var cityTemp = data.list[0].main.temp;
+      var cityTempEl = document.createElement('p');
+      cityTempEl.innerHTML = '<strong>Current Tempt:</strong> ' + cityTemp + '° fahrenheit';
+      weatherInfoEl.append(cityTempEl);    
+
+      // Weather of City
+
+      var cityWeather = data.list[0].weather[0].main;
+      var cityWeatherDes = data.list[0].weather[0].description;
+      var cityWind = data.list[0].wind.speed;
+      var cityWeatherEl = document.createElement('p');
+      cityWeatherEl.innerHTML = '<strong>Current Weather:</strong> ' + cityWeather + '<strong> Description: </strong>' + cityWeatherDes;
+      var cityWindEl = document.createElement('p');
+      cityWindEl.innerHTML = '<strong>Wind Speed:</strong> ' + cityWind;
+      weatherInfoEl.append(cityWeatherEl);
+      weatherInfoEl.append(cityWindEl);
+
+
+
+
+
+        
+
+
+
+     
+      
+
+
         return data;
     })
     .catch((error) => {
         console.error('Error in POST request:', error);
-    });
+      });
+
+ 
+
+
 
 
 
