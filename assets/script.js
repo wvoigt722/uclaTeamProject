@@ -1,20 +1,31 @@
 // Selectors
 
+// Search Selectors
+
 var searchMainEl = document.querySelector('#search-main');
 var searchMainBtnEl = document.querySelector('#search-main-btn');
+
+
+// Map Selector
 var mapEl = document.querySelector('#map');
+
+// Weather Info Selector
 
 var weatherInfoEl = document.getElementById('weatherInfo');
 
+// Chart Selectors
+
+var chartsContain = document.getElementById('chartsContain');
 var nutChartEl = document.getElementById('myNutChart');
 var barChartEl = document.getElementById('myBarChart');
 var lineChartEl = document.getElementById('myLineChart');
+
+// Table Selectors
 
 var marketInfoEl = document.getElementById('market-info');
 var educationInfoEl = document.getElementById('education-info');
 
 
-var chartsContain = document.getElementById('chartsContain');
 
 
 var weatherApiKey = '424b38ba3001e9ed90818dd50436deee';
@@ -24,10 +35,15 @@ var weatherApiKey = '424b38ba3001e9ed90818dd50436deee';
 // Event Listeners
 
 
+// Map Event Listener
 
 searchMainBtnEl.addEventListener('click', function() {
     mapEl.classList.remove('d-none');
 });
+
+
+// Chart Even Listeners
+
 searchMainBtnEl.addEventListener('click', function() {
     nutChartEl.classList.remove('d-none');
 });
@@ -36,7 +52,14 @@ searchMainBtnEl.addEventListener('click', function() {
 });
 searchMainBtnEl.addEventListener('click', function() {
     lineChartEl.classList.remove('d-none');
-});   
+  });   
+searchMainBtnEl.addEventListener('click', function() {
+    chartsContain.classList.remove('d-none');
+});
+
+
+// Info Listeners
+
 searchMainBtnEl.addEventListener('click', function() {
     marketInfoEl.classList.remove('d-none');
 });
@@ -47,10 +70,6 @@ searchMainBtnEl.addEventListener('click', function() {
     weatherInfoEl.classList.remove('d-none');
 });
 
-
-searchMainBtnEl.addEventListener('click', function() {
-    chartsContain.classList.remove('d-none');
-});
 
 
 
@@ -145,15 +164,10 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon
 
 
 
-
-
-
-
 // Charts and Data Displays
 
 
-
-
+// Doughnut Chart
 
 new Chart(nutChartEl, {
   type: 'doughnut',
@@ -176,6 +190,7 @@ new Chart(nutChartEl, {
 
 
 
+// Bar Chart
 
 new Chart(barChartEl, {
   type: 'bar',
@@ -197,6 +212,8 @@ new Chart(barChartEl, {
 });
 
 
+
+// Line Chart
 
 new Chart(lineChartEl, {
   type: 'line',
