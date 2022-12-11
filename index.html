@@ -34,7 +34,7 @@
           id="search-main"
           type="search"
           class="form-control rounded"
-          placeholder="Search"
+          placeholder="Search for a place here!"
           aria-label="Search"
           aria-describedby="search-addon"
         />
@@ -49,16 +49,38 @@
     </div>
 
     <section class="container">
-      <div class="row justify-content-between">
-        <div id="map" class="d-none col-3"></div>
+      <div id="mapAndInfo" class="row justify-content-between">
+        <div id="map" class="col-3 d-none"></div>
 
-        <div id="market-info" class="d-none col-3">
+        <div id="market-info" class="col-3 d-none">
           <h3>Market Rent Information</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
             facere. Incidunt totam eum, id culpa odio blanditiis illo, ducimus
             obcaecati illum doloribus dolor quaerat libero?
           </p>
+          <table class="table table-striped">
+            <tr>
+              <th>Layout</th>
+              <th>Price</th>
+            </tr>
+            <tr>
+              <td>Studio</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>One Bedroom</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Two Bedrooms</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Three Bedrooms</td>
+              <td>X</td>
+            </tr>
+          </table>
         </div>
         <div id="education-info" class="d-none col-3">
           <h3>High Education Level Achieved</h3>
@@ -68,19 +90,52 @@
             quisquam, blanditiis non, minus eaque nihil magni dolore vel ut,
             mollitia veritatis corporis.
           </p>
+          <table class="table table-striped">
+            <tr>
+              <td>No High School</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Some High School</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>High School Graduate</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Some College</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Associates Degree</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Bachelors Degree</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Graduate Degree</td>
+              <td>X</td>
+            </tr>
+          </table>
         </div>
 
         <div class="container">
           <div class="row justify-content-between">
             <div style="top: 60px; left: 10px; width: 30%; height: 500px">
+              <h3>Housing Inventory</h3>
               <canvas class="d-none col-3" id="myNutChart"></canvas>
             </div>
 
             <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <h3>Age Demographics</h3>
               <canvas class="d-none col-3" id="myBarChart"></canvas>
             </div>
 
             <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <h3>Income by Households</h3>
               <canvas class="d-none col-3" id="myLineChart"></canvas>
             </div>
           </div>
@@ -88,14 +143,10 @@
       </div>
     </section>
 
+    <!-- JS Charts script -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- 
-    The `defer` attribute causes the callback to execute after the full HTML
-    document has been parsed. For non-blocking uses, avoiding race conditions,
-    and consistent behavior across browsers, consider loading using Promises
-    with https://www.npmjs.com/package/@googlemaps/js-api-loader.
-  -->
+    <!-- google maps script -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzKLDsjHB1xcd2Hse-gxcNES8sXJxS7Y&callback=initMap&v=weekly"
       defer

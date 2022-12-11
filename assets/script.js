@@ -36,7 +36,6 @@ searchMainBtnEl.addEventListener('click', function() {
 searchMainBtnEl.addEventListener('click', function() {
     lineChartEl.classList.remove('d-none');
 });   
-
 searchMainBtnEl.addEventListener('click', function() {
     marketInfoEl.classList.remove('d-none');
 });
