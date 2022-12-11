@@ -26,8 +26,81 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    <header><h1>Our First Project!</h1></header>
-    <p></p>
+    <header><h1>Search a place to find information!</h1></header>
+
+    <div class="container">
+      <div class="input-group p-3 m-3">
+        <input
+          id="search-main"
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <button
+          id="search-main-btn"
+          type="button"
+          class="btn btn-outline-primary"
+        >
+          search
+        </button>
+      </div>
+    </div>
+
+    <section class="container">
+      <div class="row justify-content-between">
+        <div id="map" class="d-none col-3"></div>
+
+        <div id="market-info" class="d-none col-3">
+          <h3>Market Rent Information</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
+            facere. Incidunt totam eum, id culpa odio blanditiis illo, ducimus
+            obcaecati illum doloribus dolor quaerat libero?
+          </p>
+        </div>
+        <div id="education-info" class="d-none col-3">
+          <h3>High Education Level Achieved</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus
+            quod consequuntur perferendis animi beatae rerum officiis? Aut
+            quisquam, blanditiis non, minus eaque nihil magni dolore vel ut,
+            mollitia veritatis corporis.
+          </p>
+        </div>
+
+        <div class="container">
+          <div class="row justify-content-between">
+            <div style="top: 60px; left: 10px; width: 30%; height: 500px">
+              <canvas class="d-none col-3" id="myNutChart"></canvas>
+            </div>
+
+            <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <canvas class="d-none col-3" id="myBarChart"></canvas>
+            </div>
+
+            <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <canvas class="d-none col-3" id="myLineChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 
+    The `defer` attribute causes the callback to execute after the full HTML
+    document has been parsed. For non-blocking uses, avoiding race conditions,
+    and consistent behavior across browsers, consider loading using Promises
+    with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+  -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzKLDsjHB1xcd2Hse-gxcNES8sXJxS7Y&callback=initMap&v=weekly"
+      defer
+    ></script>
+
     <!-- Bootstrap JS Library -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -37,4 +110,4 @@
     <!-- Our JS link -->
     <script src="./assets/script.js"></script>
   </body>
-</html> 
+</html>
