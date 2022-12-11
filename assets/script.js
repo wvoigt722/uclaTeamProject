@@ -14,6 +14,7 @@ var marketInfoEl = document.getElementById('market-info');
 var educationInfoEl = document.getElementById('education-info');
 
 
+var chartsContain = document.getElementById('chartsContain');
 
 
 var weatherApiKey = '424b38ba3001e9ed90818dd50436deee';
@@ -47,6 +48,12 @@ searchMainBtnEl.addEventListener('click', function() {
 });
 
 
+searchMainBtnEl.addEventListener('click', function() {
+    chartsContain.classList.remove('d-none');
+});
+
+
+
 
 // Google Maps API
 
@@ -78,45 +85,53 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon
     .then((data) => {
         console.log('Successful POST request:', data);
 
-        console.log(data);
+  
+
+      var dataList = data.list;
+      for (let i = 0; i < dataList.length; i++) {
+        console.log(dataList[i]);
+        
+      }
+
 
       // Name of City
   
       var cityName = data.city.name;
+
       var cityNameEl = document.createElement('p');
+
       cityNameEl.innerHTML = '<strong>City:</strong> ' + cityName;
+
       weatherInfoEl.append(cityNameEl);
       console.log(cityName);
+
 
       // Temp of City
       
       var cityTemp = data.list[0].main.temp;
+
       var cityTempEl = document.createElement('p');
+
       cityTempEl.innerHTML = '<strong>Current Tempt:</strong> ' + cityTemp + '° fahrenheit';
+
+
       weatherInfoEl.append(cityTempEl);    
+
 
       // Weather of City
 
       var cityWeather = data.list[0].weather[0].main;
       var cityWeatherDes = data.list[0].weather[0].description;
       var cityWind = data.list[0].wind.speed;
+
       var cityWeatherEl = document.createElement('p');
       cityWeatherEl.innerHTML = '<strong>Current Weather:</strong> ' + cityWeather + '<strong> Description: </strong>' + cityWeatherDes;
+
       var cityWindEl = document.createElement('p');
       cityWindEl.innerHTML = '<strong>Wind Speed:</strong> ' + cityWind;
+
       weatherInfoEl.append(cityWeatherEl);
       weatherInfoEl.append(cityWindEl);
-
-
-
-
-
-        
-
-
-
-     
-      
 
 
         return data;

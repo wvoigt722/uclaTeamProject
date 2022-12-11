@@ -19,3 +19,16 @@ body {
     text-align: center;
 }
 
+
+#weatherInfo {
+  margin-bottom: 2.5rem;
+}
+
+#weatherInfo p {
+  display: inline;
+  margin-right: 1rem;
+}
+
+#chartsContain {
+  margin-top: 2.5rem;
+}
