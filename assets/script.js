@@ -13,6 +13,10 @@ var educationInfoEl = document.getElementById("education-info");
 
 var weatherApiKey = "424b38ba3001e9ed90818dd50436deee";
 
+var img = document.createElement("img");
+img.src = "pexels-johannes-plenio-3131634.jpg";
+document.body.appendChild(img);
+
 // Event Listeners
 
 searchMainBtnEl.addEventListener("click", function () {
