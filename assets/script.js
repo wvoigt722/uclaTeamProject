@@ -143,39 +143,65 @@ new Chart(lineChartEl, {
 var threeBedroomTableData = document.getElementById("threeBedroom");
 var threeBedroomTableRow = document.getElementById("threeBedroomRow");
 
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
-        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
-    }
-};
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+//         'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+//     }
+// };
 
-fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Single%20Family&bedrooms=3&maxRadius=10', options)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        console.log(data.rent)
-        var rent = data.rent
+// fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Single%20Family&bedrooms=3&maxRadius=10', options)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data)
+//         console.log(data.rent)
+//         var rent = data.rent
 
-        //* find number of properties taking avg rent for and assign to variable 'numberProperties'
-        var numberProperties = data.listings.length
-        console.log(numberProperties)
+//         //* find number of properties taking avg rent for and assign to variable 'numberProperties'
+//         var numberProperties = data.listings.length
+//         console.log(numberProperties)
 
-        //var tableRow = document.createElement("tr");
-        var singleFamilyRent = document.createElement("td");
-        singleFamilyRent.textContent = rent;
-        threeBedroomTableRow.append(singleFamilyRent);
+//         //var tableRow = document.createElement("tr");
+//         var singleFamilyRent = document.createElement("td");
+//         singleFamilyRent.textContent = rent;
+//         threeBedroomTableRow.append(singleFamilyRent);
 
-        threeBedroomTableData.textContent = numberProperties;
+//         threeBedroomTableData.textContent = numberProperties;
 
 
-    })
-    .catch(err => console.error(err));
+//     })
+//     .catch(err => console.error(err));
+
+//* rent any # bedrooms bedroom by lng and lat
+var threeBedroomTableData = document.getElementById("threeBedroom");
+
+var run3 = function () {
+    const options6 = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+            'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&maxRadius=10&compCount=20', options6)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.rent)
+        })
+        .catch(err => console.error(err));
+
+
+}
+
+
 
 
 var rentOneBedroom = document.getElementById("oneBedroom");
 
+//* fetch rent; parameters constant- bedrooms=1, radius=20km; parameters changing- lng, lat
 const options2 = {
     method: 'GET',
     headers: {
@@ -184,7 +210,7 @@ const options2 = {
     }
 };
 
-fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=20', options)
+fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=20', options2)
     .then(response => response.json())
     .then(data => {
         console.log(data)
@@ -196,19 +222,110 @@ fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + 
     .catch(err => console.error(err));
 
 
-const options3 = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
-        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
-    }
-};
 
-fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=34.0195&longitude=-118.4912&bedrooms=1&maxRadius=10&compCount=20', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+var twoBedroomTableData = document.getElementById("twoBedroom");
+var run2 = function () {
+    const options4 = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+            'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+        }
+    };
 
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=2&maxRadius=10&compCount=20', options4)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.rent);
+
+            var rent2Bedroom = data.rent;
+            twoBedroomTableData.textContent = rent2Bedroom;
+            run3();
+
+        })
+        .catch(err => console.error(err));
+}
+
+//* fetch rent; parameters constant: bedrooms=1, radius=10, compCount=20; parameters changing: lat, lng
+
+var oneBedroom = document.getElementById("oneBedroom");
+
+var run = function () {
+    const options3 = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+            'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=10&compCount=20', options3)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.rent)
+
+            var rent1Bedroom = data.rent;
+            oneBedroom.textContent = rent1Bedroom
+            run2()
+
+
+
+
+
+        })
+        .catch(err => console.error(err));
+
+}
+
+run();
+
+//* rent 2 bedroom
+
+
+//* rent 3 bedroom
+
+// const options5 = {
+//     method: 'GET',
+//     headers: {
+//         'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+//         'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+//     }
+// };
+
+// fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=3&maxRadius=10&compCount=20', options5)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data)
+//         console.log(data.rent)
+
+//         var rent3bedroom = data.rent;
+//         threeBedroomTableData = rent3bedroom;
+
+//     })
+//     .catch(err => console.error(err));
+
+
+
+
+var bedrooms;
+
+
+// const options7 = {
+//     method: 'GET',
+//     headers: {
+//         'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+//         'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+//     }
+// };
+
+// fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=' + bedrooms + '&maxRadius=10&compCount=20', options7)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data)
+//     })
+//     .catch(err => console.error(err));
 
 // // var request = new Request.Builder()
 // //     .url("https://api.gateway.attomdata.com/propertyapi/v1.0.0/property / detail ? address1 = 4529 % 20Winona % 20Court & address2=Denver % 2C % 20CO")
