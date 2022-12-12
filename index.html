@@ -22,26 +22,23 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
     <!-- Our CSS link -->
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
 
 
+
+
     
+    <!-- <img id="pic" src="./assets/LA.jpeg" alt = "picture" /> -->
 
-    
-    
+    <header><h1>Search a place to find information</h1></header>
 
-
-
-    <main>
-      <img id="pic" src="./assets/LA.jpeg" alt = "picture" />
-   
-
-    <header><h1>Search a place to find information!</h1></header>
-
-    <div class="container">
+    <div class="container2">
       <div class="input-group p-3 m-3">
         <input
           id="search-main"
@@ -59,6 +56,10 @@
           search
         </button>
       </div>
+    </div>
+  </div>      
+    <div class="container">
+      <div id="weatherInfo" class="d-none"></div>
     </div>
 
     <section class="container">
@@ -135,7 +136,7 @@
           </table>
         </div>
 
-        <div class="container">
+        <div id="chartsContain" class="container d-none">
           <div class="row justify-content-between">
             <div style="top: 60px; left: 10px; width: 30%; height: 500px">
               <h3>Housing Inventory</h3>
@@ -154,14 +155,11 @@
           </div>
         </div>
       </div>
-   
     </section>
-  
-    </main>
 
     <!-- JS Charts script -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+
     <!-- google maps script -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzKLDsjHB1xcd2Hse-gxcNES8sXJxS7Y&callback=initMap&v=weekly"
@@ -176,6 +174,5 @@
     ></script>
     <!-- Our JS link -->
     <script src="./assets/script.js"></script>
-
   </body>
 </html>
