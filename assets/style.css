@@ -1,0 +1,42 @@
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+ #map {
+    height: 500px;
+    width: 600px;
+  }
+  
+  /* 
+   * Optional: Makes the sample page fill the window. 
+   */
+  html,
+  body {
+      background-color: lightgray;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+
+  #pic {
+    position: relative;
+    
+  }
+
+  @media screen and (max-width: 992px) {
+    .pic {
+      width: 50%;
+    
+    }
+  }
+  
+  /* Cards are stacked on top of each other at 768px or smaller */
+  @media screen and (max-width: 768px) {
+    .pic {
+      width: 100%;
+    
+    }
+}
