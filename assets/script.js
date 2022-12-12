@@ -41,8 +41,8 @@ searchMainBtnEl.addEventListener("click", function () {
 // Google Maps API
 
 let map;
-var longitude = -74.0;
-var latitude = 40.71;
+var longitude = -118.2437;
+var latitude = 34.0522;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -140,6 +140,74 @@ new Chart(lineChartEl, {
     },
 });
 
+var threeBedroomTableData = document.getElementById("threeBedroom");
+var threeBedroomTableRow = document.getElementById("threeBedroomRow");
+
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+    }
+};
+
+fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Single%20Family&bedrooms=3&maxRadius=10', options)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        console.log(data.rent)
+        var rent = data.rent
+
+        //* find number of properties taking avg rent for and assign to variable 'numberProperties'
+        var numberProperties = data.listings.length
+        console.log(numberProperties)
+
+        //var tableRow = document.createElement("tr");
+        var singleFamilyRent = document.createElement("td");
+        singleFamilyRent.textContent = rent;
+        threeBedroomTableRow.append(singleFamilyRent);
+
+        threeBedroomTableData.textContent = numberProperties;
+
+
+    })
+    .catch(err => console.error(err));
+
+
+var rentOneBedroom = document.getElementById("oneBedroom");
+
+const options2 = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+    }
+};
+
+fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=20', options)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        console.log(data.rent)
+
+        var rent1Bedroom = data.rent
+        rentOneBedroom.textContent = rent1Bedroom;
+    })
+    .catch(err => console.error(err));
+
+
+const options3 = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+    }
+};
+
+fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=34.0195&longitude=-118.4912&bedrooms=1&maxRadius=10&compCount=20', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
 
 
 // // var request = new Request.Builder()
@@ -419,26 +487,3 @@ new Chart(lineChartEl, {
 
 
 
-const axios = require("axios");
-
-const options = {
-    method: 'GET',
-    url: 'https://realty-mole-property-api.p.rapidapi.com/rentalPrice',
-    params: {
-        latitude: '34.0195',
-        longitude: '-118.4912',
-        propertyType: 'Single Family',
-        bedrooms: '3',
-        maxRadius: '10'
-    },
-    headers: {
-        'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
-        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
-    }
-};
-
-axios.request(options).then(function (response) {
-    console.log(response.data);
-}).catch(function (error) {
-    console.error(error);
-});
