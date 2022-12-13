@@ -33,10 +33,15 @@ searchMainBtnEl.addEventListener("click", function () {
 });
 searchMainBtnEl.addEventListener("click", function () {
     marketInfoEl.classList.remove("d-none");
+    setTimeout(rentOneBedFam, 3000)
+    setTimeout(rentOneBedCondo, 1000)
+    setTimeout(rentOneBedApartment, 6000)
+    setTimeout(rentTwoBedApartment, 9000)
+    setTimeout(rentThreeBedApartment, 12000)
 });
-searchMainBtnEl.addEventListener("click", function () {
-    educationInfoEl.classList.remove("d-none");
-});
+// searchMainBtnEl.addEventListener("click", function () {
+//     educationInfoEl.classList.remove("d-none");
+// });
 
 // Google Maps API
 
@@ -175,8 +180,11 @@ var threeBedroomTableRow = document.getElementById("threeBedroomRow");
 
 //* grab tabledata for "oneBedroom" by id
 var oneFamilyBedTableData = document.getElementById("oneFamilyBedroom");
+var oneFamilySquareFtTableData = document.getElementById("oneFamilySquareFt");
+var oneFamilyBathTableData = document.getElementById("oneFamilyBathroom");
 
 //* rent for single family
+
 
 var rentOneBedFam = function () {
     const options = {
@@ -197,6 +205,29 @@ var rentOneBedFam = function () {
             var rentOneFamilyBed = data.rent
             oneFamilyBedTableData.textContent = "$" + rentOneFamilyBed;
 
+            //* for loop to run through listings array and populate number of square feet
+            for (var i = 0; i < data.listings.length; i++) {
+                console.log(data.listings[i].squareFootage)
+                var squareFootage = data.listings[i].squareFootage
+                console.log(squareFootage)
+
+
+                // var avgSquareFootage = squareFootage / data.listings.length
+                oneFamilySquareFtTableData.textContent = squareFootage;
+                console.log(squareFootage);
+
+
+                //* for loop to run through listings array and populate number of bathrooms
+                //for (var i = 0; i < data.listings.length; i++) {
+                console.log(data.listings[i])
+                console.log(data.listings[i].bathrooms)
+                var bathrooms = data.listings[i].bathrooms;
+                oneFamilyBathTableData.textContent = bathrooms;
+
+
+            }
+
+            //* call next run
             rentOneBedCondo();
 
         })
@@ -207,9 +238,12 @@ var rentOneBedFam = function () {
 }
 rentOneBedFam();
 
+//* "Td = table data"
 
 //* grab tabledata for oneBedroomCondo by id and assign to variable
-var oneBedroomCondo = document.getElementById("oneBedroomCondo");
+var oneBedroomCondoTd = document.getElementById("oneBedroomCondo");
+var oneBedCondoSquareFtTd = document.getElementById("oneBedCondoSquareFt");
+var oneBedCondoBathTd = document.getElementById("oneBedCondoBathroom");
 
 //* rent for 1 bed condo
 var rentOneBedCondo = function () {
@@ -229,17 +263,153 @@ var rentOneBedCondo = function () {
             console.log(data.rent)
 
             var rentOneBedCondo = data.rent;
-            oneBedroomCondo.textContent = "$" + rentOneBedCondo;
+            oneBedroomCondoTd.textContent = "$" + rentOneBedCondo;
+            //* for loop to run through listings array and populate number of square feet
+
+            var totalSquareFootage = 0;
+            var totalBathrooms = 0;
+            var skipListings = 0;
+
+
+
+
+
+            for (var i = 0; i < data.listings.length; i++) {
+                console.log(data.listings[i].squareFootage)
+                var squareFootage = data.listings[i].squareFootage
+
+                //* add total number of squareFootage per listing [i] ; add to itself to get totalSquareFootage
+                if (data.listings[i].squareFootage) {
+                    totalSquareFootage += data.listings[i].squareFootage;
+
+                }
+
+                //* find number of listings that do not have squareFootage parameter and subtract later from data.listings.length when dividing to get avg
+
+                if (!data.listings[i].squareFootage) {
+                    skipListings++
+                }
+
+                // var avgSquareFootage = squareFootage / data.listings.length
+
+                console.log(squareFootage);
+
+
+                //* for loop to run through listings array and populate number of bathrooms
+                //for (var i = 0; i < data.listings.length; i++) {
+                console.log(data.listings[i])
+                console.log(data.listings[i].bathrooms)
+                var bathrooms = data.listings[i].bathrooms;
+                oneBedCondoBathTd.textContent = bathrooms;
+
+                console.log(totalSquareFootage);
+
+            }
+
+
+            console.log(totalSquareFootage)
+            console.log(data.listings.length)
+
+            //*avg squareFoot from array of 20 listings
+
+            oneBedCondoSquareFtTd.textContent = Math.floor(totalSquareFootage / (data.listings.length - skipListings));
+
+
+
+
+            rentOneBedApartment();
 
         })
         .catch(err => console.error(err));
 
+}
+
+//* grab oneBedroomApartment table data by id
+var oneBedApartmentTableData = document.getElementById("oneBedroomApartment");
 
 
+//* for one bedroom apartment
+var rentOneBedApartment = function () {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+            'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Apartment&bedrooms=1&maxRadius=20&compCount=20', options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.rent)
+
+            var rentOneBedApartment = data.rent;
+            oneBedApartmentTableData.textContent = "$" + rentOneBedApartment;
+            rentTwoBedApartment();
+        })
+        .catch(err => console.error(err));
+}
+
+//* rent 2 bedroom apartment
+var rentTwoBedApartmentTableData = document.getElementById("twoBedroomApartment");
+
+var rentTwoBedApartment = function () {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+            'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Apartment&bedrooms=2&maxRadius=20&compCount=20', options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.rent);
+
+            var rentTwoBedApartment = data.rent;
+            rentTwoBedApartmentTableData.textContent = "$" + rentTwoBedApartment;
+
+
+
+            rentThreeBedApartment();
+
+            //run(rentTwoBedApartment);
+        })
+        .catch(err => console.error(err));
 
 }
 
-// //* rent any # bedrooms bedroom by lng and lat
+//* grab tabledata for threeBedroomApartment by id
+var threeBedApartmentTableData = document.getElementById("threeBedroomApartment");
+//*rent for 3 bedroom apartment
+var rentThreeBedApartment = function () {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+            'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Apartment&bedrooms=3&maxRadius=20&compCount=20', options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.rent)
+
+            var rentThreeBedApartment = data.rent;
+            threeBedApartmentTableData.textContent = "$" + rentThreeBedApartment;
+        })
+        .catch(err => console.error(err));
+}
+
+//var run = function (sharedValue) {}
+//* sharedValue wil equal rentTwoBedApartment
+
+// // rent any # bedrooms bedroom by lng and lat
 // var threeBedroomTableData = document.getElementById("threeBedroom");
 
 // var run3 = function () {
