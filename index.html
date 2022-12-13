@@ -1,160 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <!-- Jquery library -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap CSS Library -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
+    <!-- Our CSS link -->
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=
-    , initial-scale=1.0" />
-  <title>Document</title>
-  <!-- Jquery library -->
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-  <!-- Bootstrap CSS Library -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <!-- Our CSS link -->
-  <link rel="stylesheet" href="./assets/style.css" />
-</head>
 
-<body>
-  <header>
-    <h1>Search a place to find information!</h1>
-  </header>
 
-  <div class="container">
-    <div class="input-group p-3 m-3">
-      <input id="search-main" type="search" class="form-control rounded" placeholder="Search for a place here!"
-        aria-label="Search" aria-describedby="search-addon" />
-      <button id="search-main-btn" type="button" class="btn btn-outline-primary">
-        search
-      </button>
+
+    
+    <!-- <img id="pic" src="./assets/LA.jpeg" alt = "picture" /> -->
+
+    <div class="heads">
+      <!-- <a href="#default" class="logo">CompanyLogo</a>
+      <img src="./assets/WAKO.png" -->
+      <div class="header-right">
+        <a class="active" href="#home">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+      </div>
     </div>
-  </div>
+      
+       
+      <h2>You need to know what you need to know. 
+      <br>Search quick, & let us provide you with detailed results here:</h2>
+     </h1></header>
 
-  <section class="container">
-    <div id="mapAndInfo" class="row justify-content-between">
-      <div id="map" class="col-3 d-none"></div>
-
-      <div id="market-info" class="col-3 d-none">
-        <h3>Market Rent Information</h3>
-        <p>
-          Average Rent based off the search criteria
-        </p>
-        <table class="address">
-
-        </table>
-        <table class="card table table-striped">
-          <tr class="card-title">
-            <th>Layout</th>
-            <th>Price</th>
-            <th>Square Footage</th>
-            <th>Bathrooms</th>
-          </tr>
-          <tr class="card-title">
-            <td>One Bedroom Condo</td>
-            <td id="oneBedroomCondo">X</td>
-            <td id="oneBedCondoSquareFt">X</td>
-            <td id="oneBedCondoBathroom">X</td>
-          </tr>
-          <tr class="card-title" id="oneBedroomRow">
-            <td>One Family Bedroom</td>
-            <td id="oneFamilyBedroom">X</td>
-            <td id="oneFamilySquareFt">X</td>
-            <td id="oneFamilyBathroom">X</td>
-            <!-- <td id="oneBedroom20">X</td> -->
-          </tr>
-          <tr class="card-title" id="oneBedroomRow">
-            <td>One Bedroom Apartment</td>
-            <td id="oneBedroomApartment">X</td>
-            <td id="oneBedApartmentSquareFt">X</td>
-            <td id="oneBedApartmentBathroom">X</td>
-            <!-- <td id="oneBedroom20">X</td> -->
-          </tr>
-          <tr class="card-title">
-            <td>Two Bedroom Apartment</td>
-            <td id="twoBedroomApartment">X</td>
-            <td id="twoBedApartmentSquareFt">X</td>
-            <td id="oneBedApartmentBathroom">X</td>
-          </tr>
-          <tr class="card-title" id="threeBedroomRow">
-            <td>Three Bedroom Apartment</td>
-            <td id="threeBedroomApartment">X</td>
-          </tr>
-        </table>
+    <div class="container">
+      <div class="input-group p-3 m-3">
+        <input
+          id="search-main"
+          type="search"
+          class="form-control rounded"
+          placeholder="Search for your future community here"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <button
+          id="search-main-btn"
+          type="button"
+          class="btn btn-outline-primary"
+        >
+          search
+        </button>
       </div>
-      <div id="education-info" class="d-none col-3">
-        <h3>High Education Level Achieved</h3>
-        <p>
-          Average education level based off the search criteria
-        </p>
-        <table class="table table-striped">
-          <tr>
-            <td>No High School</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>Some High School</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>High School Graduate</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>Some College</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>Associates Degree</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>Bachelors Degree</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>Graduate Degree</td>
-            <td>X</td>
-          </tr>
-        </table>
-      </div>
+    </div>
+  </div>      
+    <div class="container">
+      <div id="weatherInfo" class="d-none"></div>
+    </div>
 
-      <div class="container">
-        <div class="row justify-content-between">
-          <div style="top: 60px; left: 10px; width: 30%; height: 500px">
-            <h3>Housing Inventory</h3>
-            <canvas class="d-none col-3" id="myNutChart"></canvas>
-          </div>
+    <section class="container">
+      <div id="mapAndInfo" class="row justify-content-between">
+        <div id="map" class="col-3 d-none"></div>
 
-          <div style="top: 60px; left: 10px; width: 30%; height: 250px">
-            <h3>Age Demographics</h3>
-            <canvas class="d-none col-3" id="myBarChart"></canvas>
-          </div>
 
-          <div style="top: 60px; left: 10px; width: 30%; height: 250px">
-            <h3>Income by Households</h3>
-            <canvas class="d-none col-3" id="myLineChart"></canvas>
+
+        
+       
+        <div id="market-info" class="col-3 d-none">
+          <h3>Market Rent Information</h3>
+          <p>
+            what the average rent is one bedroom condo,one fam bedr, one bed apat, twow bedms
+          </p>
+          
+          <table class="table table-striped">
+            
+            <tr>
+              <th>Layout</th>
+              <th>Price</th>
+            </tr>
+            <tr>
+              <td>Studio</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>One Bedroom</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Two Bedrooms</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Three Bedrooms</td>
+              <td>X</td>
+            </tr>
+          </table>
+        </div>
+
+
+      
+
+
+        <div id="education-info" class="d-none col-3">
+          <h3>High Education Level Achieved</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus
+            quod consequuntur perferendis animi beatae rerum officiis? Aut
+            quisquam, blanditiis non, minus eaque nihil magni dolore vel ut,
+            mollitia veritatis corporis.
+          </p>
+          <table class="table table-striped">
+            <tr>
+              <td>No High School</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Some High School</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>High School Graduate</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Some College</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Associates Degree</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Bachelors Degree</td>
+              <td>X</td>
+            </tr>
+            <tr>
+              <td>Graduate Degree</td>
+              <td>X</td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="chartsContain" class="container d-none">
+          <div class="row justify-content-between">
+            <div style="top: 60px; left: 10px; width: 30%; height: 500px">
+              <h3>Housing Inventory</h3>
+              <canvas class="d-none col-3" id="myNutChart"></canvas>
+            </div>
+
+            <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <h3>Age Demographics</h3>
+              <canvas class="d-none col-3" id="myBarChart"></canvas>
+            </div>
+
+            <div style="top: 60px; left: 10px; width: 30%; height: 250px">
+              <h3>Income by Households</h3>
+              <canvas class="d-none col-3" id="myLineChart"></canvas>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- JS Charts script -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- JS Charts script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- google maps script -->
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzKLDsjHB1xcd2Hse-gxcNES8sXJxS7Y&callback=initMap&v=weekly"
-    defer></script>
+    <!-- google maps script -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzKLDsjHB1xcd2Hse-gxcNES8sXJxS7Y&callback=initMap&v=weekly"
+      defer
+    ></script>
 
-  <!-- Bootstrap JS Library -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <!-- Our JS link -->
-  <script src="./assets/script.js"></script>
-</body>
-
+    <!-- Bootstrap JS Library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Our JS link -->
+    <script src="./assets/script.js"></script>
+  </body>
 </html>

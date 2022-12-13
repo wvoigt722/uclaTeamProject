@@ -42,7 +42,13 @@ searchMainBtnEl.addEventListener("click", function () {
 // searchMainBtnEl.addEventListener("click", function () {
 //     educationInfoEl.classList.remove("d-none");
 // });
-
+searchMainEl.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    searchMainBtnEl.click();
+    
+  }
+});
 // Google Maps API
 
 let map;
@@ -620,7 +626,6 @@ var rentThreeBedApartment = function () {
 //     .catch((error) => {
 //         console.error('Error in POST request:', error);
 //     });
-
 
 
 
