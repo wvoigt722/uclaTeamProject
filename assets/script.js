@@ -5,7 +5,6 @@ var searchMainBtnEl = document.querySelector('#search-main-btn');
 var mapEl = document.querySelector('#map');
 
 
-
 var nutChartEl = document.getElementById('myNutChart');
 var barChartEl = document.getElementById('myBarChart');
 var lineChartEl = document.getElementById('myLineChart');
@@ -13,16 +12,12 @@ var lineChartEl = document.getElementById('myLineChart');
 var marketInfoEl = document.getElementById('market-info');
 var educationInfoEl = document.getElementById('education-info');
 
-
-
-
 var weatherApiKey = '424b38ba3001e9ed90818dd50436deee';
 
 
 
-// Event Listeners
 
-
+//event listeners 
 
 searchMainBtnEl.addEventListener('click', function() {
     mapEl.classList.remove('d-none');
@@ -43,7 +38,13 @@ searchMainBtnEl.addEventListener('click', function() {
     educationInfoEl.classList.remove('d-none');
 });
 
-
+searchMainEl.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    searchMainBtnEl.click();
+    
+  }
+});
 
 // Google Maps API
 

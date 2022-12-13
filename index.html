@@ -22,7 +22,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Tangerine">
     <!-- Our CSS link -->
@@ -36,15 +36,28 @@
     
     <!-- <img id="pic" src="./assets/LA.jpeg" alt = "picture" /> -->
 
-    <header><h1>Search a place to find information</h1></header>
+    <div class="heads">
+      <!-- <a href="#default" class="logo">CompanyLogo</a>
+      <img src="./assets/WAKO.png" -->
+      <div class="header-right">
+        <a class="active" href="#home">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+      </div>
+    </div>
+      
+       
+      <h2>You need to know what you need to know. 
+      <br>Search quick, & let us provide you with detailed results here:</h2>
+     </h1></header>
 
-    <div class="container2">
+    <div class="container">
       <div class="input-group p-3 m-3">
         <input
           id="search-main"
           type="search"
           class="form-control rounded"
-          placeholder="Search for a place here!"
+          placeholder="Search for your future community here"
           aria-label="Search"
           aria-describedby="search-addon"
         />
@@ -66,14 +79,18 @@
       <div id="mapAndInfo" class="row justify-content-between">
         <div id="map" class="col-3 d-none"></div>
 
+
+
+        
+       
         <div id="market-info" class="col-3 d-none">
           <h3>Market Rent Information</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
-            facere. Incidunt totam eum, id culpa odio blanditiis illo, ducimus
-            obcaecati illum doloribus dolor quaerat libero?
+            what the average rent is one bedroom condo,one fam bedr, one bed apat, twow bedms
           </p>
+          
           <table class="table table-striped">
+            
             <tr>
               <th>Layout</th>
               <th>Price</th>
@@ -96,6 +113,11 @@
             </tr>
           </table>
         </div>
+
+
+      
+
+
         <div id="education-info" class="d-none col-3">
           <h3>High Education Level Achieved</h3>
           <p>
