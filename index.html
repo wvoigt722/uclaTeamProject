@@ -22,24 +22,26 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
     <!-- Our CSS link -->
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
     
-    
-    
-    <main>
-      <img id="pic" src="./assets/LA.jpeg" alt = "picture" />
-   
-    <header><h1>Search a place to find information!</h1></header>
-    <div class="container">
+    <!-- <img id="pic" src="./assets/LA.jpeg" alt = "picture" /> -->
+    <header><h1>Welcome to WAKO!
+      <br>
+      
+      Find your next forever home</h1></header>
+    <div class="container2">
       <div class="input-group p-3 m-3">
         <input
           id="search-main"
           type="search"
           class="form-control rounded"
-          placeholder="Search for a place here!"
+          placeholder="Search for your future community here"
           aria-label="Search"
           aria-describedby="search-addon"
         />
@@ -52,7 +54,11 @@
         </button>
       </div>
     </div>
-    <section class="container">
+  </div>      
+    <div class="container">
+      <div id="weatherInfo" class="d-none"></div>
+    </div>
+    <section class="container4">
       <div id="mapAndInfo" class="row justify-content-between">
         <div id="map" class="col-3 d-none"></div>
         <div id="market-info" class="col-3 d-none">
@@ -124,7 +130,7 @@
             </tr>
           </table>
         </div>
-        <div class="container">
+        <div id="chartsContain" class="container d-none">
           <div class="row justify-content-between">
             <div style="top: 60px; left: 10px; width: 30%; height: 500px">
               <h3>Housing Inventory</h3>
@@ -141,13 +147,9 @@
           </div>
         </div>
       </div>
-   
     </section>
-  
-    </main>
     <!-- JS Charts script -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
     <!-- google maps script -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzKLDsjHB1xcd2Hse-gxcNES8sXJxS7Y&callback=initMap&v=weekly"
@@ -163,3 +165,12 @@
     <script src="./assets/script.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
