@@ -3,19 +3,19 @@
  * that contains the map. 
  */
 #map {
-  height: 500px;
-  width: 600px;
-  
-  
+    height: 500px;
+    width: 600px;
+
+
 }
 
 /* 
    * Optional: Makes the sample page fill the window. 
    */
 
-body {    
-    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2488&q=80');
-    
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2488&q=80');
+
     background-color: lightgray;
     height: 100vh;
     margin: 0;
@@ -28,9 +28,9 @@ body {
 
 }
 
-.logo{
+.logo {
     width: 4px;
-    height:5px;
+    height: 5px;
 }
 
 .heads {
@@ -38,53 +38,55 @@ body {
     background-color: #f1f1f1;
     padding: 20px 10px;
     color: white;
-  }
-  
-  .heads a {
+}
+
+.heads a {
     float: left;
     color: black;
     text-align: center;
     padding: 12px;
     text-decoration: none;
-    font-size: 18px; 
+    font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
-  }
-  
-  .heads a.logo {
+}
+
+.heads a.logo {
     font-size: 25px;
     font-weight: bold;
-  }
-  
-  .heads a:hover {
+}
+
+.heads a:hover {
     background-color: #ddd;
     color: black;
-  }
-  
-  .heads a.active {
+}
+
+.heads a.active {
     background-color: white;
     color: white;
-  }
-  
-  .heads right {
+}
+
+.heads right {
     float: right;
-  }
-  
-  @media screen and (max-width: 500px) {
+}
+
+
+
+@media screen and (max-width: 500px) {
     .header a {
-      float: none;
-      display: block;
-      text-align: left;
+        float: none;
+        display: block;
+        text-align: left;
     }
-    
+
     .headers-right {
-      float: none;
+        float: none;
     }
 
-  }
+}
 
 
-#search-main{
+#search-main {
     text-align: center;
     font-weight: 900;
 }
@@ -98,41 +100,55 @@ body {
 
 
 
- #search-main {
+#search-main {
     background: rgba(255, 255, 255, 0.5);
- }
+}
 
- 
+
 
 h1 {
     font-size: 50px;
 }
- #search-main {
+
+#search-main {
     background: rgba(255, 255, 255, 0.5);
- }
+}
 
 #pic {
-    
-  position: relative; 
-  position: relative;
-  color: white;
-  display: table;
-  width: 100%;
-  height: 100vh;
-  background: top center fixed #000;
-  background-size: cover;
-  opacity: 0.5; 
+
+    position: relative;
+    position: relative;
+    color: white;
+    display: table;
+    width: 100%;
+    height: 100vh;
+    background: top center fixed #000;
+    background-size: cover;
+    opacity: 0.5;
+}
+
+#market-info {
+    display: inline-table;
+}
+
+.card {
+    display: inherit;
+}
+
+#market-info h3,
+p {
+    color: white;
 }
 
 @media screen and (max-width: 992px) {
-  .pic {
-    width: 50%;
-  }
+    .pic {
+        width: 50%;
+    }
 }
 
 /* Cards are stacked on top of each other at 768px or smaller */
 @media screen and (max-width: 768px) {
-  .pic {
-    width: 100%;
-  }
+    .pic {
+        width: 100%;
+    }
 }
