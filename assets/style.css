@@ -62,7 +62,7 @@ body {
   }
   
   .heads a.active {
-    background-color: white
+    background-color: white;
     color: white;
   }
   
@@ -81,7 +81,7 @@ body {
       float: none;
     }
 
-
+  }
 
 
 #search-main{
