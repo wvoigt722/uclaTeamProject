@@ -173,11 +173,13 @@ var threeBedroomTableRow = document.getElementById("threeBedroomRow");
 //     })
 //     .catch(err => console.error(err));
 
-//* rent any # bedrooms bedroom by lng and lat
-var threeBedroomTableData = document.getElementById("threeBedroom");
+//* grab tabledata for "oneBedroom" by id
+var oneFamilyBedTableData = document.getElementById("oneFamilyBedroom");
 
-var run3 = function () {
-    const options6 = {
+//* rent for single family
+
+var rentOneBedFam = function () {
+    const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
@@ -185,74 +187,34 @@ var run3 = function () {
         }
     };
 
-    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&maxRadius=10&compCount=20', options6)
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Single%20Family&bedrooms=1&maxRadius=20&compCount=20', options)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            console.log(data.rent)
-        })
-        .catch(err => console.error(err));
-
-
-}
-
-
-
-
-var rentOneBedroom = document.getElementById("oneBedroom");
-
-//* fetch rent; parameters constant- bedrooms=1, radius=20km; parameters changing- lng, lat
-const options2 = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
-        'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
-    }
-};
-
-fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=20', options2)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        console.log(data.rent)
-
-        var rent1Bedroom = data.rent
-        rentOneBedroom.textContent = rent1Bedroom;
-    })
-    .catch(err => console.error(err));
-
-
-
-var twoBedroomTableData = document.getElementById("twoBedroom");
-var run2 = function () {
-    const options4 = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
-            'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
-        }
-    };
-
-    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=2&maxRadius=10&compCount=20', options4)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
+            console.log(data);
             console.log(data.rent);
 
-            var rent2Bedroom = data.rent;
-            twoBedroomTableData.textContent = rent2Bedroom;
-            run3();
+            //* save data.rent for one family bedroom in a variable called rentOneFamilyBed
+            var rentOneFamilyBed = data.rent
+            oneFamilyBedTableData.textContent = "$" + rentOneFamilyBed;
+
+            rentOneBedCondo();
 
         })
         .catch(err => console.error(err));
+
+
+
 }
+rentOneBedFam();
 
-//* fetch rent; parameters constant: bedrooms=1, radius=10, compCount=20; parameters changing: lat, lng
 
-var oneBedroom = document.getElementById("oneBedroom");
+//* grab tabledata for oneBedroomCondo by id and assign to variable
+var oneBedroomCondo = document.getElementById("oneBedroomCondo");
 
-var run = function () {
-    const options3 = {
+//* rent for 1 bed condo
+var rentOneBedCondo = function () {
+
+    const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
@@ -260,26 +222,130 @@ var run = function () {
         }
     };
 
-    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=10&compCount=20', options3)
+    fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&propertyType=Condo&bedrooms=1&maxRadius=20&compCount=20', options)
         .then(response => response.json())
         .then(data => {
             console.log(data)
             console.log(data.rent)
 
-            var rent1Bedroom = data.rent;
-            oneBedroom.textContent = rent1Bedroom
-            run2()
-
-
-
-
+            var rentOneBedCondo = data.rent;
+            oneBedroomCondo.textContent = "$" + rentOneBedCondo;
 
         })
         .catch(err => console.error(err));
 
+
+
+
 }
 
-run();
+// //* rent any # bedrooms bedroom by lng and lat
+// var threeBedroomTableData = document.getElementById("threeBedroom");
+
+// var run3 = function () {
+//     const options6 = {
+//         method: 'GET',
+//         headers: {
+//             'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+//             'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+//         }
+//     };
+
+//     fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&maxRadius=10&compCount=20', options6)
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data)
+//             console.log(data.rent)
+//         })
+//         .catch(err => console.error(err));
+
+
+// }
+
+
+
+
+// var rentOneBedroom = document.getElementById("oneBedroom");
+
+// //* fetch rent; parameters constant- bedrooms=1, radius=20km; parameters changing- lng, lat
+// const options2 = {
+//     method: 'GET',
+//     headers: {
+//         'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+//         'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+//     }
+// };
+
+// fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=20', options2)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data)
+//         console.log(data.rent)
+
+//         var rent1Bedroom = data.rent
+//         rentOneBedroom.textContent = rent1Bedroom;
+//     })
+//     .catch(err => console.error(err));
+
+
+
+// var twoBedroomTableData = document.getElementById("twoBedroom");
+// var run2 = function () {
+//     const options4 = {
+//         method: 'GET',
+//         headers: {
+//             'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+//             'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+//         }
+//     };
+
+//     fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=2&maxRadius=10&compCount=20', options4)
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data)
+//             console.log(data.rent);
+
+//             var rent2Bedroom = data.rent;
+//             twoBedroomTableData.textContent = rent2Bedroom;
+//             run3();
+
+//         })
+//         .catch(err => console.error(err));
+// }
+
+// //* fetch rent; parameters constant: bedrooms=1, radius=10, compCount=20; parameters changing: lat, lng
+
+// var oneBedroom = document.getElementById("oneBedroom");
+
+// var run = function () {
+//     const options3 = {
+//         method: 'GET',
+//         headers: {
+//             'X-RapidAPI-Key': 'b9ab6f30f2mshc158b857771ac33p1c7625jsnbcdb136ab6b3',
+//             'X-RapidAPI-Host': 'realty-mole-property-api.p.rapidapi.com'
+//         }
+//     };
+
+//     fetch('https://realty-mole-property-api.p.rapidapi.com/rentalPrice?latitude=' + latitude + '&longitude=' + longitude + '&bedrooms=1&maxRadius=10&compCount=20', options3)
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data)
+//             console.log(data.rent)
+
+//             var rent1Bedroom = data.rent;
+//             oneBedroom.textContent = rent1Bedroom
+//             run2()
+
+
+
+
+
+//         })
+//         .catch (err => console.error(err));
+
+// }
+
+// run();
 
 //* rent 2 bedroom
 
@@ -309,7 +375,7 @@ run();
 
 
 
-var bedrooms;
+// var bedrooms;
 
 
 // const options7 = {
