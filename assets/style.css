@@ -36,21 +36,28 @@
   }
   
 #wakoo{
-    top: 10px;
+    /* top: 10px;
     position: relative;
     width: 10%;
-    min-height: fit-content;
-    background-position: left;
+    min-height: 66%
+    background-position: left; */
+    float: left;
+  width: 50px;
+  height: 50px;
+  
+  
 }
 
   .heads {
       overflow: hidden;
       background-color: #f1f1f1;
-      padding: 20px 10px;
+      padding: 10px 10px;
       color: white;
-      height: 150px;
-    width: 200;
-      padding: px;
+      height: 100px;
+    width: 100%;
+      
+      
+      
       
  
       
@@ -65,6 +72,7 @@
       font-size: 18px; 
       line-height: 25px;
       border-radius: 4px;
+      
     }
     
     .heads a.logo {
