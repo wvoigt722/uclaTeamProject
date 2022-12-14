@@ -42,12 +42,12 @@ searchMainBtnEl.addEventListener("click", function () {
 // searchMainBtnEl.addEventListener("click", function () {
 //     educationInfoEl.classList.remove("d-none");
 // });
-searchMainEl.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    searchMainBtnEl.click();
-    
-  }
+searchMainEl.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        searchMainBtnEl.click();
+
+    }
 });
 // Google Maps API
 
@@ -212,26 +212,66 @@ var rentOneBedFam = function () {
             oneFamilyBedTableData.textContent = "$" + rentOneFamilyBed;
 
             //* for loop to run through listings array and populate number of square feet
+
+            var totalSquareFootage = 0;
+            var totalBathrooms = 0;
+            var skipListingsSquareFt = 0;
+            var skipListingsBath = 0;
+
+
+
+
+
             for (var i = 0; i < data.listings.length; i++) {
                 console.log(data.listings[i].squareFootage)
-                var squareFootage = data.listings[i].squareFootage
-                console.log(squareFootage)
+                //var squareFootage = data.listings[i].squareFootage
 
+                //* add total number of squareFootage per listing [i] ; add to itself to get totalSquareFootage
+                if (data.listings[i].squareFootage) {
+                    totalSquareFootage += data.listings[i].squareFootage;
+                }
 
-                // var avgSquareFootage = squareFootage / data.listings.length
-                oneFamilySquareFtTableData.textContent = squareFootage;
-                console.log(squareFootage);
+                //* find number of listings that do not have squareFootage parameter and subtract later from data.listings.length when dividing to get avg
+                if (!data.listings[i].squareFootage) {
+                    skipListingsSquareFt++
+                }
+
+                console.log(totalSquareFootage);
 
 
                 //* for loop to run through listings array and populate number of bathrooms
                 //for (var i = 0; i < data.listings.length; i++) {
-                console.log(data.listings[i])
+                //console.log(data.listings[i])
                 console.log(data.listings[i].bathrooms)
-                var bathrooms = data.listings[i].bathrooms;
-                oneFamilyBathTableData.textContent = bathrooms;
+                //var bathrooms = data.listings[i].bathrooms;
 
+                if (data.listings[i].bathrooms) {
+                    totalBathrooms += data.listings[i].bathrooms;
+                }
+                if (!data.listings[i].bathrooms) {
+                    skipListingsBath++
+                }
+
+                console.log(totalBathrooms);
 
             }
+
+
+            console.log(totalSquareFootage)
+            console.log(data.listings.length)
+
+            //*avg squareFoot from array of 20 listings
+
+            oneFamilySquareFtTableData.textContent = Math.floor(totalSquareFootage / (data.listings.length - skipListingsSquareFt));
+            oneFamilyBathTableData.textContent = (totalBathrooms / (data.listings.length - skipListingsBath))
+            //* logging average squareFootage per 20 listings 
+            console.log(Math.floor(totalSquareFootage / (data.listings.length - skipListingsSquareFt)));
+            //* logging average # bathrooms per 20 listings 
+            console.log((totalBathrooms / (data.listings.length - skipListingsBath)));
+
+
+
+
 
             //* call next run
             rentOneBedCondo();
@@ -274,7 +314,8 @@ var rentOneBedCondo = function () {
 
             var totalSquareFootage = 0;
             var totalBathrooms = 0;
-            var skipListings = 0;
+            var skipListingsSquareFt = 0;
+            var skipListingsBath = 0;
 
 
 
@@ -282,33 +323,35 @@ var rentOneBedCondo = function () {
 
             for (var i = 0; i < data.listings.length; i++) {
                 console.log(data.listings[i].squareFootage)
-                var squareFootage = data.listings[i].squareFootage
+                //var squareFootage = data.listings[i].squareFootage
 
                 //* add total number of squareFootage per listing [i] ; add to itself to get totalSquareFootage
                 if (data.listings[i].squareFootage) {
                     totalSquareFootage += data.listings[i].squareFootage;
-
                 }
 
                 //* find number of listings that do not have squareFootage parameter and subtract later from data.listings.length when dividing to get avg
-
                 if (!data.listings[i].squareFootage) {
-                    skipListings++
+                    skipListingsSquareFt++
                 }
 
-                // var avgSquareFootage = squareFootage / data.listings.length
-
-                console.log(squareFootage);
+                console.log(totalSquareFootage);
 
 
                 //* for loop to run through listings array and populate number of bathrooms
                 //for (var i = 0; i < data.listings.length; i++) {
-                console.log(data.listings[i])
+                //console.log(data.listings[i])
                 console.log(data.listings[i].bathrooms)
-                var bathrooms = data.listings[i].bathrooms;
-                oneBedCondoBathTd.textContent = bathrooms;
+                //var bathrooms = data.listings[i].bathrooms;
 
-                console.log(totalSquareFootage);
+                if (data.listings[i].bathrooms) {
+                    totalBathrooms += data.listings[i].bathrooms;
+                }
+                if (!data.listings[i].bathrooms) {
+                    skipListingsBath++
+                }
+
+                console.log(totalBathrooms);
 
             }
 
@@ -318,8 +361,12 @@ var rentOneBedCondo = function () {
 
             //*avg squareFoot from array of 20 listings
 
-            oneBedCondoSquareFtTd.textContent = Math.floor(totalSquareFootage / (data.listings.length - skipListings));
-
+            oneBedCondoSquareFtTd.textContent = Math.floor(totalSquareFootage / (data.listings.length - skipListingsSquareFt));
+            oneBedCondoBathTd.textContent = (totalBathrooms / (data.listings.length - skipListingsBath))
+            //* logging average squareFootage per 20 listings 
+            console.log(Math.floor(totalSquareFootage / (data.listings.length - skipListingsSquareFt)));
+            //* logging average # bathrooms per 20 listings 
+            console.log((totalBathrooms / (data.listings.length - skipListingsBath)));
 
 
 
@@ -359,6 +406,8 @@ var rentOneBedApartment = function () {
 
 //* rent 2 bedroom apartment
 var rentTwoBedApartmentTableData = document.getElementById("twoBedroomApartment");
+var twoBedApartmentSquareFtTd = document.getElementById("twoBedApartmentSquareFt");
+var twoBedApartmentBathTd = document.getElementById("twoBedApartmentBathroom");
 
 var rentTwoBedApartment = function () {
     const options = {
@@ -377,6 +426,62 @@ var rentTwoBedApartment = function () {
 
             var rentTwoBedApartment = data.rent;
             rentTwoBedApartmentTableData.textContent = "$" + rentTwoBedApartment;
+
+            //* for loop to run through listings array and populate number of square feet
+
+            var totalSquareFootage = 0;
+            var totalBathrooms = 0;
+            var skipListingsSquareFt = 0;
+            var skipListingsBath = 0;
+
+            for (var i = 0; i < data.listings.length; i++) {
+                console.log(data.listings[i].squareFootage)
+                //var squareFootage = data.listings[i].squareFootage
+
+                //* add total number of squareFootage per listing [i] ; add to itself to get totalSquareFootage
+                if (data.listings[i].squareFootage) {
+                    totalSquareFootage += data.listings[i].squareFootage;
+                }
+
+                //* find number of listings that do not have squareFootage parameter and subtract later from data.listings.length when dividing to get avg
+                if (!data.listings[i].squareFootage) {
+                    skipListingsSquareFt++
+                }
+
+                console.log(totalSquareFootage);
+
+
+                //* for loop to run through listings array and populate number of bathrooms
+                //for (var i = 0; i < data.listings.length; i++) {
+                //console.log(data.listings[i])
+                console.log(data.listings[i].bathrooms)
+                //var bathrooms = data.listings[i].bathrooms;
+
+                if (data.listings[i].bathrooms) {
+                    totalBathrooms += data.listings[i].bathrooms;
+                }
+                if (!data.listings[i].bathrooms) {
+                    skipListingsBath++
+                }
+
+                console.log(totalBathrooms);
+
+            }
+
+
+            console.log(totalSquareFootage)
+            console.log(totalBathrooms)
+            console.log(data.listings.length)
+
+            //*avg squareFoot from array of 20 listings
+
+            twoBedApartmentSquareFtTd.textContent = Math.floor(totalSquareFootage / (data.listings.length - skipListingsSquareFt));
+            twoBedApartmentBathTd.textContent = (totalBathrooms / (data.listings.length - skipListingsBath))
+            //* logging average squareFootage per 20 listings 
+            console.log(Math.floor(totalSquareFootage / (data.listings.length - skipListingsSquareFt)));
+            //* logging average # bathrooms per 20 listings 
+            console.log(Math.floor(totalBathrooms / (data.listings.length - skipListingsBath)));
+
 
 
 
