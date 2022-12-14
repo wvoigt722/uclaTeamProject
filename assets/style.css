@@ -135,6 +135,10 @@ h1 {
     display: inherit;
 }
 
+#weatherInfo {
+    display: block;
+}
+
 #market-info h3,
 p {
     color: white;
