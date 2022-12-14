@@ -23,7 +23,9 @@
       text-align: center;
       background-repeat: no-repeat;
       background-size: cover;
-      font-family: 'Anek Devanagari', sans-serif;
+      font-family: 'Bellota Text', cursive;
+        font-family: 'Encode Sans Condensed', sans-serif;
+        font-family: 'Fira Sans', sans-serif;
       padding: 50px;
   
   }
@@ -33,15 +35,29 @@
       height:5px;
   }
   
+#wakoo{
+    top: 10px;
+    position: relative;
+    width: 10%;
+    min-height: fit-content;
+    background-position: left;
+}
+
   .heads {
       overflow: hidden;
       background-color: #f1f1f1;
       padding: 20px 10px;
       color: white;
+      height: 150px;
+    width: 200;
+      padding: px;
+      
+ 
+      
     }
     
     .heads a {
-      float: left;
+      float: right;
       color: black;
       text-align: center;
       padding: 12px;
@@ -77,8 +93,9 @@
         text-align: left;
       }
       
-      .headers-right {
+      .header-right {
         float: none;
+
       }
   
   
