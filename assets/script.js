@@ -425,7 +425,6 @@ var rentTwoBedApartment = function () {
 
                 console.log(totalSquareFootage);
 
-
                 //* for loop to run through listings array and populate number of bathrooms
                 //for (var i = 0; i < data.listings.length; i++) {
                 //console.log(data.listings[i])
